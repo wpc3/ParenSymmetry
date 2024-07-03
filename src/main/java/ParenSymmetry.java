@@ -41,6 +41,14 @@ public class ParenSymmetry {
 
 
     private void checkFile(String filename) throws IOException  {
+
+        // How to read the File
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
+        String s;
+
+        while   ((s = bufferedReader.readLine()) != null){
+            System.out.println(isBalanced(s));
+        }
 //        try{
 //            Scanner fileIn = new Scanner(new File("input.txt"));
 //
@@ -64,25 +72,25 @@ public class ParenSymmetry {
 //    }
 
         //This a java class to get a file path
-        Path filePath = Paths.get(filename);
-
-
-        Stream<String> lines = Files.lines(filePath);
-
-        //helps you go through each line in a file
-        Iterator<String > iterator = lines.iterator();
-
-        //the loop to go through each line
-        while ((iterator.hasNext())){
-
-            String line = iterator.next();
-
-            System.out.println(line + " >>> " + isBalanced(line));
-        }
-
-        lines.close();
-
-
+//        Path filePath = Paths.get(filename);
+//
+//
+//        Stream<String> lines = Files.lines(filePath);
+//
+//        //helps you go through each line in a file
+//        Iterator<String > iterator = lines.iterator();
+//
+//        //the loop to go through each line
+//        while ((iterator.hasNext())){
+//
+//            String line = iterator.next();
+//
+//            System.out.println(line + " >>> " + isBalanced(line));
+//        }
+//
+//        lines.close();
+//
+//
 
         // open file named filename
 
@@ -93,7 +101,7 @@ public class ParenSymmetry {
         // CLOSE the file
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 
 
@@ -116,6 +124,9 @@ public class ParenSymmetry {
             trues = ps.isBalanced(strToTest);
         }
         printResult(trues, true);
+
+        //Call method
+        ps.checkFile("TestStrings0.txt");
 
     }
 
